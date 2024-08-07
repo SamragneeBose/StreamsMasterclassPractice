@@ -48,7 +48,8 @@ public class Test01_FlatMap {
     public void flatMap_1()
     {
         // word->expand(word)
-        List<List<String>> result=alphabet.stream()
+        List<List<String>> result =
+                alphabet.stream()
                 .map(this::expand)
                 .collect(toList()); // TODO
 
@@ -71,8 +72,9 @@ public class Test01_FlatMap {
     @Test
     public void flatMap_2()
     {
-        List<String> result=alphabet.stream()
-                .flatMap(word->expand(word).stream())
+        List<String> result =
+                alphabet.stream()
+                .flatMap(word -> expand(word).stream())
                 .collect(toList()); // TODO
 
         assertThat(result).containsExactly(
@@ -90,8 +92,7 @@ public class Test01_FlatMap {
     @Test
     public void flatMap_3()
     {
-        Pattern pattern = Pattern.compile(" +");
-
+//        Pattern pattern = Pattern.compile(" +");
 //
 //        // Same issue -> "increase," instead of "increase"
 //        List<String> words=sonnet.stream()
@@ -102,8 +103,8 @@ public class Test01_FlatMap {
 
         // Issue -> "increase," instead of "increase"
         List<String> words=sonnet.stream()
-                .flatMap(line-> Arrays.stream(splitToWords(line)))
-                .map(word->word.replaceAll("[,.:]", ""))// Issue fixed!
+                .flatMap(line -> Arrays.stream(splitToWords(line)))
+                .map(word -> word.replaceAll("[,.:]", ""))// Issue fixed!
                 .toList(); // TODO
 
         assertThat(words.size()).isEqualTo(106);

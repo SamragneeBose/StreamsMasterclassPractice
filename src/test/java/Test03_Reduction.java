@@ -16,7 +16,8 @@ public class Test03_Reduction {
         long number = 21;
 
         // TODO
-        BigInteger result = LongStream.rangeClosed(1, number) // Stream of Long values
+        BigInteger result =
+                LongStream.rangeClosed(1, number) // Stream of Long values
                 .mapToObj(BigInteger::valueOf) // Converts long to BigInteger
                 .reduce(BigInteger.ONE, BigInteger::multiply); // Performs operation on each pair of elements
 

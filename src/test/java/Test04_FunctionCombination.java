@@ -34,7 +34,7 @@ public class Test04_FunctionCombination {
         // TODO
         Predicate<String> combinedPredicate =
                 predicates.stream()
-                .reduce(s->true, Predicate::and); // (p1, p2) -> p1.and(p2)
+                .reduce(_ -> true, Predicate::and); // (p1, p2) -> p1.and(p2)
 
         assertThat(combinedPredicate.test("")).isFalse();
         assertThat(combinedPredicate.test(null)).isFalse();

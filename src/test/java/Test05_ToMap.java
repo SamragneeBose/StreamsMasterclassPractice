@@ -37,7 +37,10 @@ public class Test05_ToMap {
         Map<String, String> result =
                 alphabet.stream()
                 .collect(
-                        toMap(word->word.substring(0,1), word->word)
+                        toMap(
+                                word -> word.substring(0,1),
+                                word -> word
+                        )
                 ); // TODO
 
         assertThat(result).containsExactly(
@@ -54,9 +57,13 @@ public class Test05_ToMap {
     @Ignore
     public void toMap_2()
     {
-        Map<String, String> result = sonnet.stream()
+        Map<String, String> result =
+                sonnet.stream()
                 .collect(
-                  toMap(word->word.substring(0, 1), word->word)
+                  toMap(
+                          word -> word.substring(0, 1), // Cannot handle duplicate keys
+                          word -> word
+                  )
                 );
     }
 
@@ -68,12 +75,13 @@ public class Test05_ToMap {
     @Test
     public void toMap_3()
     {
-        Map<String, String> result = sonnet.stream()
+        Map<String, String> result =
+                sonnet.stream()
                 .collect(
                         toMap(
-                                line->line.substring(0, 1),
-                                line->line,
-                                (line1, line2)->line1 //Merge
+                                line -> line.substring(0, 1),
+                                line -> line,
+                                (line1, line2) -> line1 //Merge
                         )
                 ); // TODO
 
@@ -99,9 +107,9 @@ public class Test05_ToMap {
         Map<String, String> result = sonnet.stream()
                 .collect(
                         toMap(
-                                line->line.substring(0, 1),
-                                line->line,
-                                (line1, line2)->line2 //Merge
+                                line -> line.substring(0, 1),
+                                line -> line,
+                                (line1, line2) -> line2 //Merge
                         )
                 ); // TODO
 
@@ -149,9 +157,9 @@ public class Test05_ToMap {
         Map<String, String> result = sonnet.stream()
                 .collect(
                         toMap(
-                                line->line.substring(0, 1),
-                                line->line,
-                                (line1, line2)->line1+"\n"+line2 //Merge
+                                line -> line.substring(0, 1),
+                                line -> line,
+                                (line1, line2) -> line1+"\n"+line2 //Merge
                         )
                 ); // TODO
 
